@@ -1,101 +1,213 @@
-import Image from "next/image";
+import { Metadata } from "next"
+import Image from "next/image"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  Tabs,
+  TabsContent,
+} from "@/components/ui/tabs"
+// import { CalendarDateRangePicker } from "@/components/date-ranger-pickup"
+import { UserNav } from "@/components/usernav"
+import { RecentSales } from "@/components/recentSales"
+import { CarouselPlugin } from "@/components/carousel"
 
-export default function Home() {
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Example dashboard app built using the components.",
+}
+
+export default function DashboardPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <>
+      <div className="md:hidden">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/examples/dashboard-light.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="block dark:hidden"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <Image
+          src="/examples/dashboard-dark.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="hidden dark:block"
+        />
+      </div>
+      <div className="hidden flex-col md:flex">
+       
+        <div className="flex-1 space-y-4 p-8 pt-6">
+          <div className="flex items-center justify-between space-y-2">
+            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <div className="flex items-center space-x-2">
+              {/* <CalendarDateRangePicker /> */}
+              {/* <Button>Download</Button> */}
+              <UserNav/>
+            </div>
+          </div>
+          <Tabs defaultValue="overview" className="space-y-4">
+            <TabsContent value="overview" className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">
+                      Total Users
+                    </CardTitle>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="h-4 w-4 text-muted-foreground"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">5981</div>
+                    <p className="text-xs text-muted-foreground">
+                      +10% from last month
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">
+                      Active Users
+                    </CardTitle>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="h-4 w-4 text-muted-foreground"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">3650</div>
+                    <p className="text-xs text-muted-foreground">
+                      +25% from last month
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Total Streams</CardTitle>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="h-4 w-4 text-muted-foreground"
+                    >
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">+12,234</div>
+                    <p className="text-xs text-muted-foreground">
+                      +19% from last month
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">
+                      Revenue
+                    </CardTitle>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" 
+                    className="h-5 w-5">
+                    <path stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 
+                    0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303
+                     0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">+573$</div>
+                    <p className="text-xs text-muted-foreground">
+                      +201 since last hour
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">
+                      Top Artist
+                    </CardTitle>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="h-4 w-4 text-muted-foreground"
+                    >
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">Karan Aujla</div>
+                    <p className="text-xs text-muted-foreground">
+                      +500k streams from last month
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+                <Card className="col-span-4">
+                  <CardHeader>
+                    <CardTitle>Overview</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pl-2">
+                    {/* <Overview /> */}
+                    <CarouselPlugin/>
+                  </CardContent>
+                </Card>
+                <Card className="col-span-3">
+                  <CardHeader>
+                    <CardTitle>Recent Sales</CardTitle>
+                    <CardDescription>
+                      You made 265 sales this month.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <RecentSales />
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+    </>
+  )
 }
