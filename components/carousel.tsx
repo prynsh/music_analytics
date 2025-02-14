@@ -1,3 +1,4 @@
+
 'use client'
 import * as React from "react"
 import Autoplay from "embla-carousel-autoplay"
@@ -9,26 +10,41 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { Overview } from "./overview"
+import { ChartBar } from "./barChart"
+import { Chart } from "./pieChart"
+
+const slides = [
+  { id: "overview", component: <Overview /> },
+  { 
+    id: "second-chart", 
+    component: (
+      <div className="flex w-full gap-4">
+        <div className="w-1/2"><ChartBar /></div>
+        <div className="w-1/2"><Chart /></div>
+      </div>
+    ) 
+  }
+];
 
 export function CarouselPlugin() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
-  )
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full "
+      className="w-full"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {Array.from({ length: 2 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
+        {slides.map((slide) => (
+          <CarouselItem key={slide.id}>
+            <div className="p-5">
               <Card>
-                <CardContent>
-                  <Overview/>
+                <CardContent className="flex justify-center items-center w-full">
+                  {slide.component}
                 </CardContent>
               </Card>
             </div>
@@ -36,5 +52,5 @@ export function CarouselPlugin() {
         ))}
       </CarouselContent>
     </Carousel>
-  )
+  );
 }
