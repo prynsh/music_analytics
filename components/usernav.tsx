@@ -7,7 +7,6 @@ import {
   import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
@@ -36,23 +35,6 @@ import {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem className="text-xs">
-              Song Name
-              <DropdownMenuShortcut>Fell for you</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Artist
-              <DropdownMenuShortcut>Shubh</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Date Streamed
-              <DropdownMenuShortcut>14-Feb-2025</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>Stream Count
-            <DropdownMenuShortcut>340</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             UserID

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis } from "recharts"
 
 import {
   Card,
@@ -137,6 +137,8 @@ export function Overview() {
   )
 
   return (
+    <ResponsiveContainer width="100%" aspect={1}>
+
     <Card className="w-full">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
@@ -150,11 +152,11 @@ export function Overview() {
             const chart = key as keyof typeof chartConfig
             return (
               <button
-                key={chart}
+              key={chart}
                 data-active={activeChart === chart}
                 className="flex flex-1 flex-col justify-center gap-1 border-t p-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
                 onClick={() => setActiveChart(chart)}
-              >
+                >
                 <span className="text-xs text-muted-foreground">
                   {chartConfig[chart].label}
                 </span>
@@ -169,7 +171,7 @@ export function Overview() {
       <CardContent className="px-2 sm:p-6">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[200px] w-full"
+           className="w-full h-[300px]"
         >
           <LineChart
             accessibilityLayer
@@ -178,7 +180,7 @@ export function Overview() {
               left: 12,
               right: 12,
             }}
-          >
+            >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
@@ -206,8 +208,8 @@ export function Overview() {
                       year: "numeric",
                     })
                   }}
-                />
-              }
+                  />
+                }
             />
             <Line
               dataKey={activeChart}
@@ -215,10 +217,11 @@ export function Overview() {
               stroke={`var(--color-${activeChart})`}
               strokeWidth={2}
               dot={false}
-            />
+              />
           </LineChart>
         </ChartContainer>
       </CardContent>
     </Card>
+    </ResponsiveContainer>          
   )
 }

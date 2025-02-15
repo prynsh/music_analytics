@@ -1,9 +1,8 @@
 import DashboardPage from "@/components/Main";
 
-export default function Home(){
+ function App(){
   return (
-    <div>
-      <DashboardPage/>
-    </div>
+        <DashboardPage/>
   )
 }
+export default App
