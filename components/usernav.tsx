@@ -35,7 +35,6 @@ import {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuSeparator />
           <DropdownMenuItem>
             UserID
             <DropdownMenuShortcut>9871</DropdownMenuShortcut>

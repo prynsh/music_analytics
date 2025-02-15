@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎵 Streamify Analytics Dashboard  
 
-## Getting Started
+A **Next.js** dashboard that provides insights into user activity, revenue, and content performance for a fictional music streaming service, **Streamify**.  
 
-First, run the development server:
+## Features  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- A SPA displaying key metrics like total users, active users, total streams, revenue, and top-performing artists.  
+- Interactive charts to visualize user growth, revenue distribution, and top streamed songs.  
+- A sortable and filterable data table for recent streams.  
+- Responsive design with a modern UI.
+- Implemented Hard Coded values using Zustand. I was to use Recoil but since Recoil is no longer maintained I have used Zustand which I learned in 1 hour and then implemented it.
+.  
+## Callouts
+- Responsive until 768 pixels that is screen size of a Tab. The reason for it to be not responsive <768 pixels is an issue with Recharts which still hasn't been patched yet. Still I have used Recharts because the UI looks real good.  
+- I will be adding Test Cases in sometime since it was optional and also add dark mode feature to make it more appealing to all genre of individuals.
+- Used Memo wherever required and Zustand to minimize re-renders.
+- I haven't used lazy loading because I am routing to a different page (SPA) and have everything under the same page.
+## Tech Stack  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js** & **React** for the frontend.  
+- **Tailwind CSS and Shadcn** for styling.  
+- **Zustand** for state management.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/prynsh/music_analytics.git
+   cd music_analytics
+2. Install the dependencies:
+   ```bash
+    npm install
+   ```
+3. Running the code: 
+   ```bash
+   npm run dev
+   ```
+## Open in browser
+Go to http://localhost:3000 in your browser.
