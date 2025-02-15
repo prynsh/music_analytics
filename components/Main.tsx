@@ -14,7 +14,8 @@ import { CarouselPlugin } from "@/components/carousel"
 import { DataTableDemo } from "./dataTable"
 import { useDashboardStore } from "@/app/store"
 import { useShallow } from 'zustand/shallow'
-import { JSX, memo } from "react"
+import { JSX, memo, useEffect, useState } from "react"
+import { Button } from "./ui/button"
 
 type StatCardProps = {
   title: string;
@@ -50,6 +51,18 @@ function DashboardPage() {
     state.revenueCount,
     state.artistName
   ]));
+  const [darkMode, setDarkMode] = useState(() => {
+    return typeof window !== "undefined" ? localStorage.getItem("darkMode") === "true" : true;
+  });
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("darkMode", "true");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("darkMode", "false");
+    }
+  }, [darkMode]);
 
   const percentageChanges = {
     totalCount: 12,
@@ -74,12 +87,14 @@ function DashboardPage() {
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center space-x-2">
-              <MemoizedUserNav />
+            <Button onClick={() => setDarkMode(!darkMode)}>
+                {darkMode ? "Light Mode" : "Dark Mode"}
+              </Button> <MemoizedUserNav />
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 dark:text-white ">
                 <StatCard title="Total Users" value={totalCount} percentageChange={percentageChanges.totalCount} text={text.totalCount} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="h-4 w-4 text-muted-foreground"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>} />
                 <StatCard title="Active Users" value={activeCount} percentageChange={percentageChanges.activeCount} text={text.activeCount} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="h-4 w-4 text-muted-foreground"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>} />
                 <StatCard title="Total Streams" value={totalStream} percentageChange={percentageChanges.totalStream} text={text.totalStream} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="h-4 w-4 text-muted-foreground"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>} />

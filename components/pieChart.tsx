@@ -77,7 +77,7 @@ export function Chart() {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
+      <CardFooter className="flex-col gap-2 text-sm mt-28">
         <div className="flex items-center text-sm gap-2 font-medium leading-none">
           We have Subscriptions as the highest contributer to our Revenue this month 
         </div>

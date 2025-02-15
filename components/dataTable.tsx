@@ -99,7 +99,7 @@ export const columns: ColumnDef<StreamData>[] = [
   },
   {
     accessorKey: "artist",
-    header: "artist",
+    header: "Artist",
     cell: ({ row }) => <div>{row.getValue("artist")}</div>,
   },
   {
